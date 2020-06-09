@@ -1,18 +1,27 @@
 endpoints:
    api:
+      # Endpoints de Spring Boot activos
       enabled: true
 logging:
    level:
+      # Nivel de log por defecto del servidro establecido al nivel de INFO
       root: info
 ontimize:
    corsfilter:
+      # Habilitado los filtros de CORS
       enabled: true
    globalcors:
+      # Configuración global de CORS
       corsConfigurations:
+         # Configuración para este punto de entrada :'[/**]'
          '[/**]':
+            # Permitir diferentes orígenes
             allowedOrigins: "*"
+            # Permitir cabeceras
             allowedHeaders: "*"
+            # Cabeceras expuestas            
             exposedHeaders: ["X-Auth-Token","Content-disposition","X-Requested-With"]
+            # Métodos HTTP permitidos            
             allowedMethods:
             - GET
             - POST
@@ -20,57 +29,94 @@ ontimize:
             - OPTIONS
             - DELETE
    jdbc:
+      # Convención de nombre de columnas
       nameConvention: lower
+      # Handler de SQL      
       sqlhandler: postgres
       sqlConditionProcessor:
+         # Uso de mayúsculas
          uppperString: true
+         # Comparación de cadenas en caso de condición LIKE en mayúscula
          upperLike: true
    security:
+      # Modo de seguridad por defecto
       mode: default
+      #Configurar las columnas del rol de usuario
       roleInformationService:
+         # Repositorio que almacenan los roles
          roleRepository: UserRoleDao
-         roleNameColumn: ROLENAME
+         #Nombre de la columnas que tiene el nombre del rol
+         roleNameColumn: rolename
+         #Identificador de la query para la consulta de permisos en el servidor
          serverPermissionQueryId: serverPermissions
-         serverPermissionNameColumn: PERMISSION_NAME
+         #Nombre de la columna que contiene el nombre del permiso
+         serverPermissionNameColumn: permission_name
+         #Identificador de la query para la consulta de permisos en el cliente
          clientPermissionQueryId: clientPermissions
-         clientPermissionColumn: XMLCLIENTPERMISSION
+         #Nombre de la columna que contiene los permisos del cliente
+         clientPermissionColumn: xmlclientpermission
+      #Información sobre el usuario
       userInformationService:
+         #Repositorio que almacena los usuarios de la aplicación
          userRepository: UserDao
-         userLoginColumn: USER_
-         userPasswordColumn: PASSWORD
+         # Nombre de la columna con el nombre de usuario
+         userLoginColumn: user_
+         # Nombre de la columnas con la contraseña
+         userPasswordColumn: password
+         # Indentificador de la query para iniciar sesión
          queryId: login
+         # Otras columnas de consulta
          otherData:
             - NAME
             - SURNAME
             - EMAIL
-            - NIF
+            #- NIF
             - USERBLOCKED
             - LASTPASSWORDUPDATE
             - FIRSTLOGIN
+      #Información sobre el repositorio que enlaza usuarios y roles
       userRoleInformationService:
+         # Nombre del repositorio
          userRoleRepository: UserRoleDao
+         # Identificador de la consulta
          queryId: userRole
-         roleLoginColumn: USER_
-         roleNameColumn: ROLENAME
+         # Columna que almacena al usuario
+         roleLoginColumn: user_
+         # Columna que almacena el nombre del rol
+         roleNameColumn: rolename
 server:
+   # Puerto del servidor
    port: 33333
    tomcat:
+      # Codificación de la URI
       uri-encoding: UTF-8
    compression:
+      # Habilitar la compresión de datos
       enabled: true
+      # Tipos mime
       mime-types: application/json, application/xml
 spring:
+   # Origen de los datos (Conexión con la DB)
    datasource:
+      #Driver del JDBC
       driver-class-name: org.postgresql.Driver
-      jdbcUrl: jdbc:postgresql://localhost:65432/cd07
+      #URL de conexión
+      jdbcUrl: jdbc:postgresql://45.84.210.174:65432/cd07
+      # Nombre de usuario de la BD
       username: cd07
+      # Contraseña del usuario de la BD
       password: cd07_P4$$!
+      # Tamaño inicial
       initialSize: 10
+      # Validación
       testOnBorrow: true
    main:
+      # Eliminar el banner de inicio en la consola
       banner-mode: 'off'
    session:
+      # Almacenar la sesión en spring
       store-type: none
    autoconfigure:
+      #Elimina los ficheros de autoconfiguración de Spring Boot
       exclude: |
          org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
