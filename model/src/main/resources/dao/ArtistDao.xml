@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+    xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+    catalog="" schema="${mainschema}" table="artist"
+    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_artist</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_artist</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_artist</GeneratedKey>
+    <Queries>
+    	<Query id="default">
+    		<ValidColumns>
+    			<Column>id_artist</Column>
+    			<Column>artist_name</Column>
+    			<Column>artist_bio</Column>
+    		</ValidColumns>
+    		<Sentence>
+    			<![CDATA[
+    				SELECT
+    					#COLUMNS#
+    				FROM
+    					${mainschema}.artist
+    				#WHERE#		
+    			]]>
+    		</Sentence>
+    	</Query>
+    </Queries>           
+</JdbcEntitySetup>
