@@ -52,16 +52,49 @@ public class ArtistRestController extends ORestController<IArtistService> {
 			return res;
 		}
 	}
-
+	
 	private BasicExpression searchLikeArtistName(String attrName, String artist_name) {
-		BasicField field = new BasicField(attrName);
-		String[] data = artist_name.split(" ");
-		String dataCompare = "%";
-		for (String d : data) {
-			dataCompare += d + "%"; 
-		}
 		
-		return new BasicExpression(field, BasicOperator.LIKE_OP, dataCompare);
+		BasicField field = new BasicField(attrName);
+		String[] data = artist_name.trim().split("\\s+");
+		int dataLength = data.length;
+		BasicExpression one = null;
+		BasicExpression two = null;
+		BasicExpression total = null;
+		BasicExpression increment = null;
+		BasicExpression create = null;
+
+		switch (dataLength) {
+
+		case 1:
+			total = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[0] + "%");
+			break;
+
+		default:
+			one = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[0] + "%");
+			two = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[1] + "%");
+			for (int i = 1; i < dataLength ; i++) {	
+				total = increment;
+				if (dataLength == 2) {
+					increment = new BasicExpression(one, BasicOperator.OR_OP, two);
+					total = increment;
+				} else {
+					if(i == 2) {
+						create = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[i] + "%");
+						increment = new BasicExpression(two, BasicOperator.OR_OP, create);
+						total = new BasicExpression(one, BasicOperator.OR_OP, increment);
+						
+					}else {
+						create = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[i] + "%");
+						increment = new BasicExpression(total, BasicOperator.OR_OP, create);
+						total = increment;
+					}
+				}
+			}
+			break;
+		}
+		return total;
 	}
+
 
 }
