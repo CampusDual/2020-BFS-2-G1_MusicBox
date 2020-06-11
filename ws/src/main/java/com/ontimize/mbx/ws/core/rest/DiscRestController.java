@@ -18,31 +18,32 @@ import com.ontimize.db.SQLStatementBuilder.BasicExpression;
 import com.ontimize.db.SQLStatementBuilder.BasicField;
 import com.ontimize.db.SQLStatementBuilder.BasicOperator;
 import com.ontimize.jee.server.rest.ORestController;
-import com.ontimize.mbx.api.core.service.IArtistService;
-import com.ontimize.mbx.model.core.dao.ArtistDao;
+import com.ontimize.mbx.api.core.service.IDiscService;
+import com.ontimize.mbx.model.core.dao.DiscDao;
 
 @RestController
-@RequestMapping("/artists")
-@ComponentScan(basePackageClasses = { com.ontimize.mbx.api.core.service.IArtistService.class })
-public class ArtistRestController extends ORestController<IArtistService> {
+@RequestMapping("/discs")
+@ComponentScan(basePackageClasses = { com.ontimize.mbx.api.core.service.IDiscService.class })
+public class DiscRestController extends ORestController<IDiscService> {
+
 	@Autowired
-	private IArtistService artistSrv;
+	private IDiscService discSrv;
 
 	@Override
-	public IArtistService getService() {
-		return this.artistSrv;
+	public IDiscService getService() {
+		return this.discSrv;
 	}
 
-	@RequestMapping(value = "/artistsSearch", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/discSearch", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public EntityResult resultSearchLikeByName(@RequestBody Map<String, Object> req) {
 		try {
 			List<String> columns = (List<String>) req.get("columns");
 			Map<String, Object> filter = (Map<String, Object>) req.get("filter");
-			String artist_name = (String) filter.get("artist_name");
+			String disc_name = (String) filter.get("disc_name");
 			Map<String, Object> key = new HashMap<String, Object>();
 			key.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY,
-					searchLikeArtistName(ArtistDao.ATTR_NAME, artist_name));
-			return artistSrv.artistQuery(key, columns);
+					searchLikediscName(DiscDao.ATTR_NAME, disc_name));
+			return discSrv.discQuery(key, columns);
 		} catch (Exception e) {
 			e.printStackTrace();
 			EntityResult res = new EntityResult();
@@ -51,10 +52,9 @@ public class ArtistRestController extends ORestController<IArtistService> {
 		}
 	}
 
-	private BasicExpression searchLikeArtistName(String attrName, String artist_name) {
-
+	private BasicExpression searchLikediscName(String attrName, String disc_name) {
 		BasicField field = new BasicField(attrName);
-		String[] data = artist_name.trim().split("\\s+");
+		String[] data = disc_name.trim().split("\\s+");
 		int dataLength = data.length;
 		BasicExpression one = null;
 		BasicExpression two = null;
@@ -82,12 +82,11 @@ public class ArtistRestController extends ORestController<IArtistService> {
 						create = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[i] + "%");
 						increment = new BasicExpression(two, BasicOperator.OR_OP, create);
 						total = new BasicExpression(one, BasicOperator.OR_OP, increment);
-						
 
 					} else {
 						create = new BasicExpression(field, BasicOperator.LIKE_OP, "%" + data[i] + "%");
 						increment = new BasicExpression(total, BasicOperator.OR_OP, create);
-					
+
 						total = increment;
 					}
 				}
@@ -96,4 +95,5 @@ public class ArtistRestController extends ORestController<IArtistService> {
 		}
 		return total;
 	}
+
 }
