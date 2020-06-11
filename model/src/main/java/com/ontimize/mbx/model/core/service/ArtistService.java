@@ -1,7 +1,6 @@
 package com.ontimize.mbx.model.core.service;
 
-import  com.ontimize.mbx.model.core.dao.ArtistDao;
-
+import com.ontimize.mbx.model.core.dao.ArtistDao;
 
 import java.util.List;
 import java.util.Map;
@@ -18,15 +17,16 @@ import com.ontimize.mbx.api.core.service.IArtistService;
 @Service("ArtistService")
 @Lazy
 public class ArtistService implements IArtistService {
+
 	@Autowired
 	private ArtistDao artistDao;
-	
+
 	@Autowired
 	private DefaultOntimizeDaoHelper daoHelper;
 
 	@Override
-	public EntityResult artistQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException
-	{
+	public EntityResult artistQuery(Map<String, Object> keyMap, List<String> attrList)
+			throws OntimizeJEERuntimeException {
 		return this.daoHelper.query(this.artistDao, keyMap, attrList);
 	}
 
@@ -47,5 +47,4 @@ public class ArtistService implements IArtistService {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-
 }
