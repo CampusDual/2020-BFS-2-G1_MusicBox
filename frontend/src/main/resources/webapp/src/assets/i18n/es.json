@@ -13,5 +13,8 @@
   "ERROR_SESSION_EXPIRED": "La sesión ha caducado",
   "ERROR_USER_REQUIRED": "Nombre de usuario incorrecto.",
   "ERROR_PASS_REQUIRED": "Contraseña incorrecta.",
-  "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta."
+  "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta.",
+  "ARTIST": "Artista",
+  "DISC": "Disco",
+  "SONG": "Canción"
 }
