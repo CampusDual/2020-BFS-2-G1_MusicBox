@@ -41,7 +41,7 @@ public class DiscRestController extends ORestController<IDiscService> {
 		try {
 			List<String> columns = (List<String>) req.get("columns");
 			Map<String, Object> filter = (Map<String, Object>) req.get("filter");
-			String disc_name = (String) filter.get("disc_name");
+			String disc_name = (String) filter.get("search_name");
 			Map<String, Object> key = new HashMap<String, Object>();
 			key.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY,
 					toolSrv.searchObjectByLikeName(DiscDao.ATTR_NAME, disc_name));
