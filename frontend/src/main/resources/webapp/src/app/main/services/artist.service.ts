@@ -1,32 +1,28 @@
-import { OntimizeEEService, Observable } from 'ontimize-web-ngx';
 import { Injectable } from '@angular/core';
+import { OntimizeEEService, Observable } from 'ontimize-web-ngx';
+import { CONFIG } from 'app/app.config';
 import { share } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
-import { CONFIG } from 'app/app.config';
+
 
 @Injectable(
-    // {
-    // providedIn: 'root'
-    // }
-)
-export class HomeService extends OntimizeEEService {
+     {
+     providedIn: 'root'
+     }
+  )
+export class ArtistService extends OntimizeEEService{
 
-    searchItems(filter: any, columns: string[], urlRoute: string) {
-    //    console.log(urlRoute);
-    //    console.log(radioValue);
-        const url = CONFIG.apiEndpoint + urlRoute ;  // esta ruta es provisional, hay que completar las tres rutas
+  getArtist(artistId: number) {
+    
+        const url = CONFIG.apiEndpoint + '/artists/artist/search';
         var options = {
             headers: this.buildHeaders()
         };
-
-     //   filter[`${radioValue}`] = filter
-     //  var data primero vacio
-
         var body = JSON.stringify({
             filter: {
-                search_name: filter
+                id_artist: artistId
             },
-            columns: columns
+            columns: ['id_artist', 'artist_name', 'artist_bio', 'artist_photo']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {
