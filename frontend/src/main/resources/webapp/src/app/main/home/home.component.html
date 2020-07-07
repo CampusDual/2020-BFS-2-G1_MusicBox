@@ -21,9 +21,9 @@
       edit-button-in-row-icon="edit" detail-mode="none">      
         <mat-card *ngFor="let row of list.dataArray">                
             <mat-card-header>
-              <a [routerLink]="['/main/artist', row.id_artist]">
+              <a [routerLink]='[routerOption, row[fieldListKey]]'>
                 <div mat-card-avatar>
-                  <img matListAvatar fxFill src= "{{[routeImage] + row.id_artist + '.jpg'}}" >
+                  <img matListAvatar fxFill src= "{{[routeImage] + row[fieldListKey] + '.jpg'}}" >
                 </div>
               </a>
               <div title="{{ row[fieldName] }}"></div>
