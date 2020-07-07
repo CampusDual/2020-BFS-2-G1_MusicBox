@@ -76,34 +76,42 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*comentario creado de prueba*/ 
+  /*comentario creado de prueba*/ 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
 
   getColumns(radioValue: string) { 
     if (radioValue === 'artist_name') {
-    this.columns = ['id_artist', 'artist_name', 'artist_bio', 'artist_photo'];
-    this.fieldsListSearch = 'id_artist;artist_name;artist_bio;artist_photo';
-    this.fieldListKey = 'id_artist';
-    this.fieldName = 'artist_name';
-    this.routeImage = this.appComponet.imageArtistRoute;
+      this.columns = ['id_artist', 'artist_name', 'artist_bio', 'artist_photo'];
+      this.fieldsListSearch = 'id_artist;artist_name;artist_bio;artist_photo';
+      this.fieldListKey = 'id_artist';
+      this.fieldName = 'artist_name';
+      this.routeImage = this.appComponet.imageArtistRoute;
     } else if (radioValue === 'disc_name') {
-    this.columns = ['id_disc', 'id_artist', 'disc_name', 'producer'];
-    this.fieldsListSearch = 'id_disc;id_artist;disc_name;producer';
-    this.fieldListKey = 'id_disc';
-    this.fieldName = 'disc_name';
-    this.routeImage = this.appComponet.imageDiscRoute;
+      this.columns = ['id_disc', 'id_artist', 'disc_name', 'producer'];
+      this.fieldsListSearch = 'id_disc;id_artist;disc_name;producer';
+      this.fieldListKey = 'id_disc';
+      this.fieldName = 'disc_name';
+      this.routeImage = this.appComponet.imageDiscRoute;
     } else if (radioValue === 'song_name') {
-    this.columns = []; // introducir columnas cancion cuando se implemente el servicio
+      this.columns = ['id_song', 'id_gender', 'song_name', 'song_length'];
+      this.fieldsListSearch = 'id_song';'id_gender';'song_name';'song_length';
+      this.fieldListKey = 'id_song';
+      this.fieldName = 'song_name';
+      this.routeImage = this.appComponet.imageSongRoute;
     }
     return this.columns;
     }
 
     getUrlRoute(radioValue: string) {
       if (radioValue === 'artist_name') {
-      this.urlRoute = '/artists/artistsSearch';
+        this.urlRoute = '/artists/artistsSearch';
       } else if (radioValue === 'disc_name') {
-      this.urlRoute = '/discs/discSearch';
+        this.urlRoute = '/discs/discSearch';
+      } else if (radioValue === 'song_name') {
+        this.urlRoute = '/songs/songSearch';
       }
       return this.urlRoute;
       }
