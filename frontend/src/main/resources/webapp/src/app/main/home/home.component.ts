@@ -76,6 +76,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*comentario creado de prueba*/ 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
