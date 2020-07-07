@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { HomeService } from '../services/home.service';
 import { AppComponent } from 'app/app.component';
 
@@ -89,7 +90,6 @@ export class HomeComponent implements OnInit {
     } else if (radioValue === 'disc_name') {
     this.columns = ['id_disc', 'id_artist', 'disc_name', 'producer'];
     this.fieldsListSearch = 'id_disc;id_artist;disc_name;producer';
-    this.fieldListKey = 'disc_name';
     this.fieldListKey = 'id_disc';
     this.fieldName = 'disc_name';
     this.routeImage = this.appComponet.imageDiscRoute;

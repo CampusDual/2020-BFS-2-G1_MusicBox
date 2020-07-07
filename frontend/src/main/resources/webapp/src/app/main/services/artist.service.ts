@@ -6,13 +6,13 @@ import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable(
-    // {
-    // providedIn: 'root'
-    // }
+     {
+     providedIn: 'root'
+     }
   )
 export class ArtistService extends OntimizeEEService{
 
-  getArtist(artistId: number, columns = []) {
+  getArtist(artistId: number) {
     
         const url = CONFIG.apiEndpoint + '/artists/artist/search';
         var options = {
@@ -22,11 +22,11 @@ export class ArtistService extends OntimizeEEService{
             filter: {
                 id_artist: artistId
             },
-            columns: columns
+            columns: ['id_artist', 'artist_name', 'artist_bio', 'artist_photo']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {
-            self.httpClient.post(url, options).subscribe(function (resp) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
                 self.parseSuccessfulQueryResponse(resp, _innerObserver);
             }, function (error) {
                 self.parseUnsuccessfulQueryResponse(error, _innerObserver);

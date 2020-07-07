@@ -5,9 +5,9 @@ import { HttpHeaders } from '@angular/common/http';
 import { CONFIG } from 'app/app.config';
 
 @Injectable(
-    // {
-    // providedIn: 'root'
-    // }
+     {
+     providedIn: 'root'
+     }
 )
 export class HomeService extends OntimizeEEService {
 

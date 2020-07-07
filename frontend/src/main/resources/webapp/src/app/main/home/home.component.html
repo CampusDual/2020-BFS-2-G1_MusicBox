@@ -8,7 +8,7 @@
     </o-row>
   
     <o-text-input attr="input2" label="Input search" [data]="" read-only="no" required="yes"
-      (onValueChange)="textValue($event)">
+    clear-button="yes" (onValueChange)="textValue($event)">
     </o-text-input>
   </o-form>
   
@@ -21,7 +21,7 @@
       edit-button-in-row-icon="edit" detail-mode="none">      
         <mat-card *ngFor="let row of list.dataArray">                
             <mat-card-header>
-              <a [routerLink]="['/main/artist, row.id_artist']">
+              <a [routerLink]="['/main/artist', row.id_artist]">
                 <div mat-card-avatar>
                   <img matListAvatar fxFill src= "{{[routeImage] + row.id_artist + '.jpg'}}" >
                 </div>
