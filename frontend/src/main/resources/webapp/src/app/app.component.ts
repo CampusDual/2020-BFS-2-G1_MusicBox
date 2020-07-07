@@ -9,10 +9,12 @@ export class AppComponent implements OnInit {
 
   imageArtistRoute: string;
   imageDiscRoute: string;
+  imageSongRoute: string;
 
   constructor() {
     this.imageArtistRoute =  './assets/images/imagesArtists/';
     this.imageDiscRoute = './assets/images/imagesDiscs/';
+    this.imageSongRoute = './assets/images/imagesSongs/';
   }
 
   ngOnInit() {
