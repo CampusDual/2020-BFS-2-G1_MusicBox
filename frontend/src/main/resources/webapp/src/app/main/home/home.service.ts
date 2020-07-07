@@ -18,6 +18,7 @@ export class HomeService extends OntimizeEEService {
         var options = {
             headers: this.buildHeaders()
         };
+
      //   filter[`${radioValue}`] = filter
      //  var data primero vacio
 
