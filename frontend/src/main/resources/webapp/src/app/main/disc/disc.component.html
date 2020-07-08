@@ -1,0 +1,17 @@
+<mat-card *ngIf="discData">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title title="">{{[discName]}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{[discImageRoute] + [discId] + '.jpg'}}">
+  <mat-card-content >    
+    <p>Artist: {{[artistNameShow]}}</p>    
+  </mat-card-content>
+  <mat-card-content >    
+    <p>Produced by: {{[discProducer]}}</p>    
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
       this.routerOption = '/main/song';
       this.routeImage = this.appComponet.imageSongRoute;
     }
-    return this.columns;
+      return this.columns;
     }
 
     getUrlRoute(radioValue: string) {
