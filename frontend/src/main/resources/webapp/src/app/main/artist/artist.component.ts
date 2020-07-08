@@ -31,15 +31,15 @@ export class ArtistComponent implements OnInit {
         this.artistImageRoute = this.appComponet.imageArtistRoute;        
         this.artistService.getArtist(this.artistId)
         .subscribe(          
-          res => {this.artistData = res && res['data'] && res['data'][0] ? res['data'][0] :  [];
-          console.log(this.artistData);
-          var name = "artist_name";
-          this.artistName = this.artistData[name];
-          console.log(this.artistName);
-          var bio = "artist_bio";
-          this.artistBio = this.artistData[bio];
-          console.log(this.artistBio);
-        }
+            res => {this.artistData = res && res['data'] && res['data'][0] ? res['data'][0] :  [];
+            console.log(this.artistData);
+            var name = "artist_name";
+            this.artistName = this.artistData[name];
+            console.log(this.artistName);
+            var bio = "artist_bio";
+            this.artistBio = this.artistData[bio];
+            console.log(this.artistBio);
+            }
           );
       });      
   }

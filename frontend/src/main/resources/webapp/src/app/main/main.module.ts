@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { ArtistComponent } from './artist/artist.component';
+import { DiscComponent } from './disc/disc.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ArtistComponent } from './artist/artist.component';
   ],
   declarations: [
     MainComponent,
-    ArtistComponent
+    ArtistComponent,
+    DiscComponent
   ]
 })
 export class MainModule { }
