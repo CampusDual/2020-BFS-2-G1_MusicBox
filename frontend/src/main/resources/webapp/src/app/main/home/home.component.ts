@@ -26,10 +26,7 @@ export class HomeComponent implements OnInit {
   arrayRadioValues = [{'key': 'artist_name',
     'value': 'Artist'}, {'key': 'disc_name',
     'value': 'Disc'}, {'key': 'song_name',
-    'value': 'Song'}];
-
-  
-  
+    'value': 'Song'}];  
   
   @Output()
   appComponet = new AppComponent();
@@ -106,7 +103,7 @@ export class HomeComponent implements OnInit {
       this.fieldListKey = 'id_song';
       this.fieldName = 'song_name';
       this.routerOption = '/main/song';
-      this.routeImage = this.appComponet.imageSongRoute;
+      this.routeImage = this.appComponet.imageDiscRoute;
     }
       return this.columns;
     }

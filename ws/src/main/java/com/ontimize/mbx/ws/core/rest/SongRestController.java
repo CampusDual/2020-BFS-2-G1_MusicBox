@@ -31,25 +31,18 @@ import com.ontimize.mbx.model.core.dao.SongDao;
 @RequestMapping("/songs")
 @ComponentScan(basePackageClasses = { com.ontimize.mbx.api.core.service.ISongService.class,
                                       com.ontimize.mbx.api.core.service.ITool.class })
-public class SongRestController extends ORestController<ISongService> {
-
- 
+public class SongRestController extends ORestController<ISongService> { 
 
     @Autowired
-    private ISongService songSrv;
-
- 
+    private ISongService songSrv; 
 
     @Autowired
-    private ITool toolSrv;
-
- 
+    private ITool toolSrv; 
 
     @Override()
     public ISongService getService() {
         return this.songSrv;
     }
-
  
 
     @RequestMapping(value = "/songSearch", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -69,4 +62,6 @@ public class SongRestController extends ORestController<ISongService> {
             return res;
         }
     }
+    
+   
 }

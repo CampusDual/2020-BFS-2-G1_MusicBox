@@ -1,0 +1,20 @@
+<mat-card *ngIf="songData">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title title="">{{[songName]}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-avatar src="{{[discImageRoute] + [songIdData] + '.jpg'}}">
+  <mat-card-content >    
+    <p>Length: {{[songLength]}}</p>    
+  </mat-card-content>
+  <mat-card-content >    
+    <p>Disc: {{[songDisc]}}</p>    
+  </mat-card-content>
+  <mat-card-content >    
+    <p>Artist: {{[songArtist]}}</p>    
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

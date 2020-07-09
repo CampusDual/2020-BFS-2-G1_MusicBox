@@ -12,3 +12,9 @@
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
+<mat-selection-list #discs checkbox="hiden">
+  <mat-list-option *ngFor="let disc of arrayOfDiscs" [value]="disc">
+    <img matListAvatar src="" alt="Foto">    
+    {{disc}}    
+  </mat-list-option>  
+</mat-selection-list>
