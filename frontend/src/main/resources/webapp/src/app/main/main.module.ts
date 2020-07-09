@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
+import { SongComponent } from './song/song.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { DiscComponent } from './disc/disc.component';
   declarations: [
     MainComponent,
     ArtistComponent,
-    DiscComponent
+    DiscComponent,
+    SongComponent
   ]
 })
 export class MainModule { }

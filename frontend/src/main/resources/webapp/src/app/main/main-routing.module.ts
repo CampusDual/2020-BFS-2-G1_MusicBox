@@ -6,6 +6,7 @@ import { MainComponent } from './main.component';
 import { HomeModule } from './home/home.module';
 import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
+import { SongComponent } from './song/song.component';
 
 export function loadHomeModule() {
   return HomeModule;
@@ -29,6 +30,10 @@ export const routes: Routes = [
       {
         path: 'disc/:DISCID',
         component: DiscComponent
+      },
+      {
+        path: 'song/:SONGID',
+        component: SongComponent
       }
     ]
   }
