@@ -1,7 +1,7 @@
 <mat-card *ngIf="artistData">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title title="">{{[artistName]}}</mat-card-title>
+    <mat-card-title title=""><h2>{{[artistName]}}</h2></mat-card-title>
   </mat-card-header>
   <img mat-card-image src="{{[artistImageRoute] + [artistId] + '.jpg'}}">
   <mat-card-content >    
@@ -12,9 +12,11 @@
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
-<mat-selection-list #discs checkbox="hiden">
+<mat-selection-list #discs >
   <mat-list-option *ngFor="let disc of arrayOfDiscs" [value]="disc">
-    <img matListAvatar src="" alt="Foto">    
-    {{disc}}    
+    <a [routerLink]= "[routerDisc, disc['id_disc']]">
+    <img matListAvatar src="{{[discImageRoute] + disc['id_disc'] + '.jpg'}}" alt="Foto">    
+    {{disc['disc_name']}}
+  </a>    
   </mat-list-option>  
 </mat-selection-list>
