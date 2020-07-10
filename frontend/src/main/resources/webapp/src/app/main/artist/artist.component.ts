@@ -1,8 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistService } from '../services/artist.service';
 import { AppComponent } from 'app/app.component';
 import { SongService } from '../services/song.service';
+import { DiscService } from '../services/disc.service';
 
 @Component({
   selector: 'artist',
@@ -16,17 +17,22 @@ export class ArtistComponent implements OnInit {
   artistAllData: any;
   artistName: string;
   artistImageRoute: string;
+  discImageRoute: string;
   artistBio: string;
   discName: string;
-  arrayOfDiscs: string[];
+  routerDisc: string;
+  test: any;
+  arrayOfDiscs: string[] = [];
   
   @Output()
   appComponent = new AppComponent();
   
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     protected artistService: ArtistService,
-    protected songService: SongService
+    protected songService: SongService,
+    protected discService: DiscService
     ) { }
 
     ngOnInit() {
@@ -51,9 +57,14 @@ export class ArtistComponent implements OnInit {
             var name = "disc_name";
             this.discName = this.artistAllData[name];
             console.log(this.discName);
-            // ¿¿¿¿ ?????
-            var arrDisc = this.arrayOfDiscs.push(this.discName);
-            console.log(arrDisc);
+          this.discService.getDiscsOfArtist(this.artistId)
+          .subscribe(
+            res => {this.arrayOfDiscs = res && res['data'] && res['data'] ? res['data'] :  [];
+            this.discImageRoute = this.appComponent.imageDiscRoute;
+            this.routerDisc = '/main/disc';
+          console.log(this.arrayOfDiscs);
+          
+          })          
           }
           ) 
             }
