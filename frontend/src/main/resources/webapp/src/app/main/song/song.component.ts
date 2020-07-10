@@ -19,6 +19,8 @@ export class SongComponent implements OnInit {
   songArtist: string;
   songIdData: number;
   songAllData: any;
+  genderOfDisc: string;
+  test: number;
 
   @Output()
   appComponent = new AppComponent();
@@ -42,16 +44,16 @@ export class SongComponent implements OnInit {
         var length = "song_length";
         this.songLength = this.songData[length];
 
-        var songIdGetData = "id_song";
-        this.songIdData = this.songData[songIdGetData];
-        console.log(this.songIdData);
-        this.songService.getData(this.songIdData)
+        this.songService.getData(this.songId)
         .subscribe(
           res => {this.songAllData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
-          console.log(this.songAllData);
-          var artistName = "artist_name"
+          console.log(this.songAllData);          
+          var discId = "id_disc";
+          this.test = this.songAllData[discId];
+          console.log(this.test);
+          var artistName = "artist_name";
           this.songArtist = this.songAllData[artistName];
-          var discName = "disc_name"
+          var discName = "disc_name";
           this.songDisc = this.songAllData[discName];
         }
         )

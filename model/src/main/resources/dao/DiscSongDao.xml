@@ -15,6 +15,7 @@
 	<Queries>
 		<Query id="default">
 			<AmbiguousColumns>
+				<AmbiguousColumn name="ID_GENDER" prefix="G"/>
 		    	<AmbiguousColumn name="ID_SONG" prefix="DS" />		   	
 		    	<AmbiguousColumn name="ID_DISC" prefix="D" />		   	
 		    	<AmbiguousColumn name="ID_ARTIST" prefix="A" />
@@ -24,7 +25,9 @@
     				SELECT
     					#COLUMNS#
     				FROM
-    					PUBLIC.SONG S
+    					PUBLIC.GENDER G
+    					INNER JOIN PUBLIC.SONG S ON
+    					G.ID_GENDER = S.ID_GENDER	    					
     					INNER JOIN PUBLIC.DISC_SONG DS ON
     					S.ID_SONG = DS.ID_SONG
     					INNER JOIN PUBLIC.DISC D ON

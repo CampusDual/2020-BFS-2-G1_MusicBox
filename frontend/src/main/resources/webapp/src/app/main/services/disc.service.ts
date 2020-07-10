@@ -60,6 +60,29 @@ export class DiscService extends OntimizeEEService{
      //   return this.httpClient.post(url, body, options);
      }
 
+     getGenderOfDisc(discId: number) {
+    
+        const url = CONFIG.apiEndpoint + '/songs/discSong/search';
+        var options = {
+            headers: this.buildHeaders()
+        };
+        var body = JSON.stringify({
+            filter: {
+                id_disc: discId
+            },
+            columns: ['id_gender', 'gender_name']
+        });
+        var self = this;
+        var dataObservable = new Observable(function (_innerObserver) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
+                self.parseSuccessfulQueryResponse(resp, _innerObserver);
+            }, function (error) {
+                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
+            }, function () { return _innerObserver.complete(); });
+        });
+        return dataObservable.pipe(share());
+     }
+
     buildHeaders () {
         const appData = JSON.parse(localStorage.getItem(CONFIG.uuid));
         return new HttpHeaders({
