@@ -26,6 +26,8 @@ export class DiscComponent implements OnInit {
   routerDisc: string;
   routerSong:string;
   idSongForRoute: number;
+  genderDataOfDisc: any;
+  genderNameOfDisc: string;
 
   @Output()
   appComponent = new AppComponent();
@@ -66,6 +68,15 @@ export class DiscComponent implements OnInit {
         var artistName = "artist_name"
         this.artistNameShow = this.discArtistData[artistName]
         console.log(this.artistNameShow)
+
+      this.discService.getGenderOfDisc(this.ifDiscForSongs)
+      .subscribe(
+        res => {this.genderDataOfDisc = res && res['data'] && res['data'][0] ? res['data'][0] : [];
+      console.log(this.genderDataOfDisc);
+      var gender = "gender_name";
+      this.genderNameOfDisc = this.genderDataOfDisc[gender];
+      }
+      )  
       
       this.songService.getSongsOfDisc(this.discId).subscribe(
         res => {this.arrayOfSongs = res && res['data'] && res['data'] ? res['data'] : [];
@@ -76,8 +87,7 @@ export class DiscComponent implements OnInit {
 
         var idSong= "id_song";
         this.idSongForRoute = this.arrayOfSongs.values[idSong];
-          console.log(this.idSongForRoute);
-        
+                 
         }
       )
       

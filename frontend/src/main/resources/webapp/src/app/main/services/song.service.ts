@@ -45,7 +45,7 @@ export class SongService extends OntimizeEEService{
             filter: {
                 id_song: songId
             },
-            columns: ['id_song', 'id_gender', 'song_name', 'song_length',
+            columns: ['id_gender', 'gender_name', 'id_song' , 'song_name', 'song_length',
                  'id_disc_song', 'id_disc', 'id_artist', 'disc_name', 'producer',
                   'artist_name', 'artist_bio']
         });
