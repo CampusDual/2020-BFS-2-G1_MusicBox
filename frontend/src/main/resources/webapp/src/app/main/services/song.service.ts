@@ -83,6 +83,30 @@ export class SongService extends OntimizeEEService{
         });
         return dataObservable.pipe(share()); 
       }  
+      //*********************************** */
+      getSongsOfDisc(disctId: number) {
+        const url = CONFIG.apiEndpoint + '/songs/discSong/search';
+        var options = {
+            headers: this.buildHeaders()
+        };
+        var body = JSON.stringify({
+            filter: {
+                id_disc: disctId
+            },
+            columns: ['id_song', 'song_name', 'song_length']
+        });
+        var self = this;
+        var dataObservable = new Observable(function (_innerObserver) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
+                self.parseSuccessfulQueryResponse(resp, _innerObserver);
+            }, function (error) {
+                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
+            }, function () { return _innerObserver.complete(); });
+        });
+        return dataObservable.pipe(share()); 
+      }  
+
+
 
     buildHeaders () {
         const appData = JSON.parse(localStorage.getItem(CONFIG.uuid));
