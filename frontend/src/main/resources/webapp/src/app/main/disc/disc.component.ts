@@ -3,6 +3,7 @@ import { AppComponent } from 'app/app.component';
 import { ActivatedRoute } from '@angular/router';
 import { DiscService } from '../services/disc.service';
 import { ArtistService } from '../services/artist.service';
+import { SongService } from '../services/song.service';
 
 @Component({
   selector: 'disc',
@@ -20,6 +21,11 @@ export class DiscComponent implements OnInit {
   discArtistData: any;
   artistIdOfDisc: number;
   artistNameShow: string;
+  arrayOfSongs: string[] = [];;
+  ifDiscForSongs: number;
+  routerDisc: string;
+  routerSong:string;
+  idSongForRoute: number;
 
   @Output()
   appComponent = new AppComponent();
@@ -27,7 +33,9 @@ export class DiscComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     protected discService: DiscService,
-    protected artistService: ArtistService
+    protected artistService: ArtistService,
+    protected songService: SongService
+    
   ) { }
 
   ngOnInit() {
@@ -45,6 +53,8 @@ export class DiscComponent implements OnInit {
         var producer = "producer"
         this.discProducer = this.discData[producer];
         console.log(this.discProducer);
+        var idDiscForGetSongs = "id_disc";
+        this.ifDiscForSongs = this.discData[idDiscForGetSongs];
         
         var artistNameId = "id_artist";
         this.artistIdOfDisc = this.discData[artistNameId];
@@ -56,6 +66,21 @@ export class DiscComponent implements OnInit {
         var artistName = "artist_name"
         this.artistNameShow = this.discArtistData[artistName]
         console.log(this.artistNameShow)
+      
+      this.songService.getSongsOfDisc(this.discId).subscribe(
+        res => {this.arrayOfSongs = res && res['data'] && res['data'] ? res['data'] : [];
+        console.log(this.arrayOfSongs);
+
+        this.discImageRoute = this.appComponent.imageDiscRoute;
+            this.routerSong = '/main/song';
+
+        var idSong= "id_song";
+        this.idSongForRoute = this.arrayOfSongs.values[idSong];
+          console.log(this.idSongForRoute);
+        
+        }
+      )
+      
       }
       )  
       }
