@@ -16,7 +16,7 @@
       title="{{inputSearchValue}}" quick-filter="false" 
       refresh-button="false" insert-button="false" insert-button-position="bottom"
       insert-button-floatable="false" delete-button="false"
-      selectable="false" dense="false" detail-button-in-row="true"
+      selectable="false" dense="false" detail-button-in-row="false"
       detail-button-in-row-icon="chevron_right" edit-button-in-row="false"
       edit-button-in-row-icon="edit" detail-mode="none">      
         <mat-card *ngFor="let row of list.dataArray">                
@@ -28,9 +28,6 @@
               </a>
               <div title="{{ row[fieldName] }}"></div>
               <mat-card-title >{{row[fieldName]}}</mat-card-title>           
-              <!--<mat-card-actions>
-                  <button mat-button>Show</button>
-              </mat-card-actions>-->
             </mat-card-header>              
           </mat-card>       
         </o-list>  
