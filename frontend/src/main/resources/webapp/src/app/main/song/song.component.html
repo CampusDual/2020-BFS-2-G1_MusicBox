@@ -1,17 +1,17 @@
 <mat-card *ngIf="songData">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title title=""><h2>{{[songName]}}</h2></mat-card-title>
+    <mat-card-title><h2>{{[songName]}}</h2></mat-card-title>
   </mat-card-header>
   <img mat-card-avatar src="{{[discImageRoute] + [test] + '.jpg'}}">
   <mat-card-content >    
-    <p>Length: {{[songLength]}}</p>    
+    <p><strong>Length: </strong>{{[songLength]}}</p>    
   </mat-card-content>
   <mat-card-content >    
-    <p>Disc: {{[songDisc]}}</p>    
+    <p><strong>Disc: </strong>{{[songDisc]}}</p>    
   </mat-card-content>
   <mat-card-content >    
-    <p>Artist: {{[songArtist]}}</p>    
+    <p><strong>Artist: </strong>{{[songArtist]}}</p>    
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>

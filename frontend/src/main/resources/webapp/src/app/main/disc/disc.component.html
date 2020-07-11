@@ -1,17 +1,17 @@
 <mat-card *ngIf="discData">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title title=""><h2>{{[discName]}}</h2></mat-card-title>
+    <mat-card-title><h2>{{[discName]}}</h2></mat-card-title>
   </mat-card-header>
   <img mat-card-image src="{{[discImageRoute] + [discId] + '.jpg'}}">
   <mat-card-content >    
-    <p>Artist: {{[artistNameShow]}}</p>    
+    <p><strong>Artist: </strong>{{[artistNameShow]}}</p>    
   </mat-card-content>
   <mat-card-content >    
-    <p>Gender: {{[genderNameOfDisc]}}</p>    
+    <p><strong>Gender: </strong>{{[genderNameOfDisc]}}</p>    
   </mat-card-content>
   <mat-card-content >    
-    <p>Produced by: {{[discProducer]}}</p>    
+    <p><strong>Produced by: </strong>{{[discProducer]}}</p>    
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>
@@ -20,11 +20,10 @@
 </mat-card>
 
 <mat-selection-list #songs >
-  <mat-list-option *ngFor="let song of arrayOfSongs" [value]="song">
-    <a [routerLink]= "[routerSong, song['id_song']]">
+  <mat-card-title>Tracklist</mat-card-title>
+  <mat-list-option *ngFor="let song of arrayOfSongs" [value]="song" [routerLink]= "[routerSong, song['id_song']]" style="text-decoration:none">
     <img matListAvatar src="{{[discImageRoute] + [ifDiscForSongs] + '.jpg'}}" alt="Foto">    
-    {{song['song_name']}}
-  </a>    
+    {{song['song_name']}}    
   </mat-list-option>  
 </mat-selection-list>
 
