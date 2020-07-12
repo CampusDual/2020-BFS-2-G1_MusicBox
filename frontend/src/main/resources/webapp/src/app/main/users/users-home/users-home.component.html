@@ -1,0 +1,11 @@
+<o-form-layout-manager title="{{'USERS' | oTranslate }}" separator=" " mode="dialog" label-columns="user_;name" controls="false" show-title="true" pagination-controls="no">
+  <div fxFlex>
+   <o-table fxFlex attr="usersTable" service="users" entity="user" keys="id_user" 
+     columns="User_;Name"
+     visible-columns="User_;Name" 
+     query-rows="15">
+     <o-table-column attr="user_" title="User" width="150px">{{[user_user]}}</o-table-column>
+     <o-table-column attr="user_name" title="Name" width="150px">{{[userName]}}</o-table-column>
+   </o-table>
+  </div>
+ </o-form-layout-manager>

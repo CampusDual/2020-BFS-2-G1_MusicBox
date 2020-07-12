@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -30,16 +31,22 @@ public class UserService implements IUserService {
 	}
 
 	public EntityResult userQuery(Map<?, ?> keyMap, List<?> attrList) {
+		Map<Object, Object> filter = new HashMap<>();
+		filter.put("user_", this.daoHelper.getUser().getUsername());
 		return this.daoHelper.query(userDao, keyMap, attrList);
 	}
 
 	public EntityResult userInsert(Map<?, ?> attrMap) {
 		return this.daoHelper.insert(userDao, attrMap);
 	}
-
+ 
 	public EntityResult userUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
-		return this.daoHelper.update(userDao, attrMap, keyMap);
-	}
+		 Map<Object, Object> filter = new HashMap<>();
+		 List columns = Arrays.asList("ID_USER"); // Qué id_user usamos??
+		 Map user = this.userQuery(filter, columns).getRecordValues(0);
+		 filter.put("ID_USER", user.get("ID_USER"));
+		 return this.daoHelper.update(userDao, attrMap, filter);
+		}
 
 	public EntityResult userDelete(Map<?, ?> keyMap) {
 		Map<Object, Object> attrMap = new HashMap<>();
