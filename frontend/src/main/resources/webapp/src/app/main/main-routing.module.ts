@@ -7,9 +7,14 @@ import { HomeModule } from './home/home.module';
 import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
+import { UsersModule } from './users/users.module';
 
 export function loadHomeModule() {
   return HomeModule;
+}
+
+export function loadUsersModule(){
+  return UsersModule;
 }
 
 export const routes: Routes = [
@@ -22,6 +27,10 @@ export const routes: Routes = [
       {
         path: 'home',
         loadChildren: loadHomeModule
+      },
+      {
+        path: 'users',
+        loadChildren: loadUsersModule
       },
       {
         path: 'artist/:ARTISTID',
