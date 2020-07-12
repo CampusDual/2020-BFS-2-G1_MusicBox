@@ -3,6 +3,6 @@ export const SERVICE_CONFIG: Object = {
     'path': '/customers'
   },
   'users': {
-    'path': '/user'
+    'path': '/users'
   }
 };
