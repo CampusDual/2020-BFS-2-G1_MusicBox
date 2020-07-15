@@ -13,7 +13,7 @@ const routes: Routes = [{
   component: UsersDetailComponent
 },
 {
-  path: 'USERID',
+  path: 'user/:user_',
   component: UsersDetailComponent
 }];
 

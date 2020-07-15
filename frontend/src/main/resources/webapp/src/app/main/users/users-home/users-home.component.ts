@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AppComponent } from 'app/app.component';
 import { UserService } from 'app/main/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users-home',
@@ -12,12 +13,13 @@ export class UsersHomeComponent implements OnInit {
   userData: any;
   user_user: string;
   userName: string;
-
+  profileRoute: string;
 
   @Output()
   appComponent = new AppComponent();
 
   constructor(
+    private route: ActivatedRoute,
     protected userService: UserService
   ) { }
 
@@ -31,7 +33,8 @@ export class UsersHomeComponent implements OnInit {
       console.log(this.user_user);
       var name = "name";
       this.userName = this.userData[name]; 
-      console.log(this.userName);     
+      console.log(this.userName);
+      this.profileRoute = '/main/users/user';    
     }
     )
   }

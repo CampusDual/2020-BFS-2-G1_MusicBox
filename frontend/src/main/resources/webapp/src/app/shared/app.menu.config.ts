@@ -3,5 +3,5 @@ import { MenuRootItem } from 'ontimize-web-ngx';
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
-  { id: 'users', name: 'User', icon: 'business_center', route: '/main/users'}
+  { id: 'users', name: 'User', icon: 'person', route: '/main/users'}
 ];

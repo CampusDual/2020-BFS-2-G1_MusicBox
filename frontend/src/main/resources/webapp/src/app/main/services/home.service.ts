@@ -12,14 +12,10 @@ import { CONFIG } from 'app/app.config';
 export class HomeService extends OntimizeEEService {
 
     searchItems(filter: any, columns: string[], urlRoute: string) {
-    //    console.log(urlRoute);
-    //    console.log(radioValue);
-        const url = CONFIG.apiEndpoint + urlRoute ;  // esta ruta es provisional, hay que completar las tres rutas
+        const url = CONFIG.apiEndpoint + urlRoute ;
         var options = {
             headers: this.buildHeaders()
         };
-     //   filter[`${radioValue}`] = filter
-     //  var data primero vacio
 
         var body = JSON.stringify({
             filter: {
