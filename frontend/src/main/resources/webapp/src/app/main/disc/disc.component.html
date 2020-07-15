@@ -21,7 +21,8 @@
 
 <mat-selection-list #songs >
   <mat-card-title>Tracklist</mat-card-title>
-  <mat-list-option *ngFor="let song of arrayOfSongs" [value]="song" [routerLink]= "[routerSong, song['id_song']]" style="text-decoration:none">
+  <mat-list-option *ngFor="let song of arrayOfSongs" [value]="song" 
+  [routerLink]= "[routerSong, song['id_song']]" style="text-decoration:none">
     <img matListAvatar src="{{[discImageRoute] + [ifDiscForSongs] + '.jpg'}}" alt="Foto">    
     {{song['song_name']}}    
   </mat-list-option>  

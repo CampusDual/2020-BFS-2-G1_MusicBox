@@ -32,8 +32,8 @@ public class UserService implements IUserService {
 
 	public EntityResult userQuery(Map<?, ?> keyMap, List<?> attrList) {
 		Map<Object, Object> filter = new HashMap<>();
-		filter.put("user_", this.daoHelper.getUser().getUsername());
-		return this.daoHelper.query(userDao, keyMap, attrList);
+		filter.put(userDao.USER_, this.daoHelper.getUser().getUsername());
+		return this.daoHelper.query(userDao, filter, attrList);
 	}
 
 	public EntityResult userInsert(Map<?, ?> attrMap) {
@@ -41,13 +41,21 @@ public class UserService implements IUserService {
 	}
  
 	public EntityResult userUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
-		 Map<Object, Object> filter = new HashMap<>();
-		 List columns = Arrays.asList("ID_USER"); // Qué id_user usamos??
-		 Map user = this.userQuery(filter, columns).getRecordValues(0);
-		 filter.put("ID_USER", user.get("ID_USER"));
-		 return this.daoHelper.update(userDao, attrMap, filter);
+//		 Map<Object, Object> filter = new HashMap<>();
+//		 List columns = Arrays.asList(userDao.ID);
+//		 EntityResult userData = this.userQuery(filter, columns);
+//		 Map<Object, Object> user = userData.getRecordValues(0);
+//		 filter.put(userDao.ID, user.get(userDao.ID));
+//		 return this.daoHelper.update(userDao, attrMap, filter);
+		Map<Object, Object> filter = new HashMap<>();
+		filter.put(userDao.USER_, this.daoHelper.getUser().getUsername());
+		List columns = Arrays.asList(userDao.ID);
+		EntityResult userData = this.daoHelper.query(userDao, filter, columns);		
+		Map<Object, Object> user = userData.getRecordValues(0);
+		filter.put(userDao.ID, user.get(userDao.ID));
+		return this.daoHelper.update(userDao, attrMap, filter);
 		}
-
+	
 	public EntityResult userDelete(Map<?, ?> keyMap) {
 		Map<Object, Object> attrMap = new HashMap<>();
 		attrMap.put("user_down_date", new Timestamp(Calendar.getInstance().getTimeInMillis()));

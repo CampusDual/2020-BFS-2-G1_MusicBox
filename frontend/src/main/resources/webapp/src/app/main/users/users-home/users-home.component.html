@@ -1,11 +1,12 @@
-<o-form-layout-manager title="{{'USERS' | oTranslate }}" separator=" " mode="tab" label-columns="user_;name" controls="false" show-title="true">
-  <div fxFlex>
-   <o-table fxFlex attr="usersTable" service="users" entity="user" keys="id_user" 
-     columns="user_;name"
-     visible-columns="user_;name" 
-     query-rows="15">
-     <o-table-column attr="user_" title="User" width="150px">{{[user_user]}}</o-table-column>
-     <o-table-column attr="name" title="Name" width="150px">{{[userName]}}</o-table-column>
-   </o-table>
-  </div>
- </o-form-layout-manager>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar src='./assets/images/avatar.png'></div>
+    <mat-card-title><strong>{{[user_user]}}</strong></mat-card-title>    
+  </mat-card-header>  
+  
+  <mat-card-actions>
+    <button mat-button [routerLink]="[profileRoute, user_user]">Profile</button>
+    <button mat-button>+Playlists</button>
+  </mat-card-actions>
+</mat-card>
+

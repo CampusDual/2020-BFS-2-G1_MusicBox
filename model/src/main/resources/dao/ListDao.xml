@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+    xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+    catalog="" schema="${mainschema}" table="list"
+    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_list</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_list</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_list</GeneratedKey>
+    <Queries>
+    	<Query id="default">
+    		<ValidColumns>
+    			<Column>id_list</Column>
+    			<Column>id_user</Column>
+    			<Column>list_name</Column>
+    		</ValidColumns>
+    		<Sentence>
+    			<![CDATA[
+    				SELECT
+    					#COLUMNS#
+    				FROM
+    					${mainschema}.list
+    				#WHERE#		
+    			]]>
+    		</Sentence>
+    	</Query>
+    </Queries>           
+</JdbcEntitySetup>

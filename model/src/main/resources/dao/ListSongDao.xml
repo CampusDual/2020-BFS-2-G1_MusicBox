@@ -1,0 +1,38 @@
+<JdbcEntitySetup
+	xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="list_song"
+	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>id_list_song</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>id_list_song</Column>
+	</UpdateKeys>
+	<GeneratedKey>id_list_song</GeneratedKey>
+	<Queries>
+		<Query id="default">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="ID_USER" prefix="T"/>
+		    	<AmbiguousColumn name="ID_LIST" prefix="L" />		   	
+		    	<AmbiguousColumn name="ID_LIST_SONG" prefix="LS" />		   	
+		  	</AmbiguousColumns>
+			<Sentence>
+    			<![CDATA[
+    				SELECT
+    					#COLUMNS#
+    				FROM
+    					PUBLIC.TUSER T
+    					INNER JOIN PUBLIC.LIST L ON
+    					T.ID_USER = L.ID_USER
+    					INNER JOIN PUBLIC.LIST_SONG LS ON
+    					L.ID_LIST = LS.ID_LIST
+    					INNER JOIN PUBLIC.SONG S ON
+    					LS.ID_SONG = S.ID_SONG    										     	
+    				#WHERE#		
+    			]]>
+    		</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>
