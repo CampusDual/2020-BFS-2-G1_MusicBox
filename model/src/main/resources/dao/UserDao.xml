@@ -13,14 +13,7 @@
     </UpdateKeys>
     <GeneratedKey>id_user</GeneratedKey>
     <Queries>
-        <Query id="default">
-            <ValidColumns>
-                <Column>user_</Column>
-                <Column>email</Column>
-                <Column>password</Column>
-                <Column>name</Column>
-                <Column>surname</Column>
-            </ValidColumns>
+        <Query id="default">            
             <Sentence>
                 <![CDATA[
                     SELECT
@@ -32,13 +25,6 @@
             </Sentence>
         </Query>    
         <Query id="login">
-            <ValidColumns>
-                <Column>user_</Column>
-                <Column>email</Column>
-                <Column>password</Column>
-                <Column>name</Column>
-                <Column>surname</Column>
-            </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT 

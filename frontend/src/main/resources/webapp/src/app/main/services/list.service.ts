@@ -10,19 +10,19 @@ import { HttpHeaders } from '@angular/common/http';
      providedIn: 'root'
      }
   )
-export class SongService extends OntimizeEEService{    
+export class ListService extends OntimizeEEService{    
     
-  getSong(songId: number) {
+  getList(listId: number) {
     
-        const url = CONFIG.apiEndpoint + '/songs/song/search';
+        const url = CONFIG.apiEndpoint + '/lists/list/search';
         var options = {
             headers: this.buildHeaders()
         };
         var body = JSON.stringify({
             filter: {
-                id_song: songId
+                id_list: listId
             },
-            columns: ['id_song', 'id_gender', 'song_name', 'song_length']
+            columns: ['id_list', 'id_user', 'list_name']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {
@@ -36,18 +36,40 @@ export class SongService extends OntimizeEEService{
      //   return this.httpClient.post(url, body, options);
      }
 
-     getData(songId: number) {
-        const url = CONFIG.apiEndpoint + '/songs/discSong/search';
+     getListAllData(listId: number) {
+        const url = CONFIG.apiEndpoint + '/lists/listSong/search';
         var options = {
             headers: this.buildHeaders()
         };
         var body = JSON.stringify({
             filter: {
-                id_song: songId
+                id_list: listId
             },
-            columns: ['id_gender', 'gender_name', 'id_song' , 'song_name', 'song_length',
-                 'id_disc_song', 'id_disc', 'id_artist', 'disc_name', 'producer',
-                  'artist_name', 'artist_bio']
+            columns: ['id_user', 'user_', 'password', 'name', 'surname',
+                 'email', 'userblocked', 'lastpasswordupdate', 'firstlogin', 'id_list',
+                  'id_user', 'list_name', 'id_list_song', 'id_list', 'id_song', 'id_gender', 'song_name', 'song_length']
+        });
+        var self = this;
+        var dataObservable = new Observable(function (_innerObserver) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
+                self.parseSuccessfulQueryResponse(resp, _innerObserver);
+            }, function (error) {
+                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
+            }, function () { return _innerObserver.complete(); });
+        });
+        return dataObservable.pipe(share()); 
+      }
+
+      getListsOfUser(userId: number) {
+        const url = CONFIG.apiEndpoint + '/lists/list/search';
+        var options = {
+            headers: this.buildHeaders()
+        };
+        var body = JSON.stringify({
+            filter: {
+                id_user: userId
+            },
+            columns: ['id_user', 'id_list', 'id_user', 'list_name']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {
@@ -60,54 +82,7 @@ export class SongService extends OntimizeEEService{
         return dataObservable.pipe(share()); 
       }
       
-      getDataArtist(artistId: number) {
-        const url = CONFIG.apiEndpoint + '/songs/discSong/search';
-        var options = {
-            headers: this.buildHeaders()
-        };
-        var body = JSON.stringify({
-            filter: {
-                id_artist: artistId
-            },
-            columns: ['id_song', 'id_gender', 'song_name', 'song_length',
-                 'id_disc_song', 'id_disc', 'id_artist', 'disc_name', 'producer',
-                  'artist_name', 'artist_bio']
-        });
-        var self = this;
-        var dataObservable = new Observable(function (_innerObserver) {
-            self.httpClient.post(url, body, options).subscribe(function (resp) {
-                self.parseSuccessfulQueryResponse(resp, _innerObserver);
-            }, function (error) {
-                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
-            }, function () { return _innerObserver.complete(); });
-        });
-        return dataObservable.pipe(share()); 
-      }  
-      //*********************************** */
-      getSongsOfDisc(discId: number) {
-        const url = CONFIG.apiEndpoint + '/songs/discSong/search';
-        var options = {
-            headers: this.buildHeaders()
-        };
-        var body = JSON.stringify({
-            filter: {
-                id_disc: discId
-            },
-            columns: ['id_song', 'song_name', 'song_length']
-        });
-        var self = this;
-        var dataObservable = new Observable(function (_innerObserver) {
-            self.httpClient.post(url, body, options).subscribe(function (resp) {
-                self.parseSuccessfulQueryResponse(resp, _innerObserver);
-            }, function (error) {
-                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
-            }, function () { return _innerObserver.complete(); });
-        });
-        return dataObservable.pipe(share()); 
-      }  
-
-
-
+      
     buildHeaders () {
         const appData = JSON.parse(localStorage.getItem(CONFIG.uuid));
         return new HttpHeaders({

@@ -15,7 +15,6 @@ export class UserService extends OntimizeEEService{
   user: string;
 
   getUserData() {
-
         const url = CONFIG.apiEndpoint + '/users/user/search';
         var options = {
             headers: this.buildHeaders()

@@ -14,12 +14,12 @@
 	<GeneratedKey>id_disc</GeneratedKey>
 	<Queries>
 		<Query id="default">
-			<ValidColumns>
+		<ValidColumns>
 				<Column>id_disc</Column>
 				<Column>id_artist</Column>
 				<Column>disc_name</Column>
 				<Column>producer</Column>
-			</ValidColumns>
+			</ValidColumns>			
 			<Sentence>
     			<![CDATA[
     				SELECT
