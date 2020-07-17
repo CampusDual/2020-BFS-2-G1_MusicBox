@@ -44,7 +44,7 @@ export class SongComponent implements OnInit {
         var length = "song_length";
         this.songLength = this.songData[length];
 
-        this.songService.getData(this.songId)
+        this.songService.getAllDataSong(this.songId)
         .subscribe(
           res => {this.songAllData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
           console.log(this.songAllData);          

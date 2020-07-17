@@ -81,6 +81,28 @@ export class ListService extends OntimizeEEService{
         });
         return dataObservable.pipe(share()); 
       }
+
+      getSongsOfList(listId: number) {
+        const url = CONFIG.apiEndpoint + '/lists/listSong/search';
+        var options = {
+            headers: this.buildHeaders()
+        };
+        var body = JSON.stringify({
+            filter: {
+                id_list: listId
+            },
+            columns: ['id_list', 'id_song', 'song_name', 'song_length']
+        });
+        var self = this;
+        var dataObservable = new Observable(function (_innerObserver) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
+                self.parseSuccessfulQueryResponse(resp, _innerObserver);
+            }, function (error) {
+                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
+            }, function () { return _innerObserver.complete(); });
+        });
+        return dataObservable.pipe(share()); 
+      }  
       
       
     buildHeaders () {

@@ -16,7 +16,7 @@
 			<AmbiguousColumns>
 				<AmbiguousColumn name="ID_USER" prefix="T"/>
 		    	<AmbiguousColumn name="ID_LIST" prefix="L" />		   	
-		    	<AmbiguousColumn name="ID_LIST_SONG" prefix="LS" />		   	
+		    	<AmbiguousColumn name="ID_SONG" prefix="LS" />		   	
 		  	</AmbiguousColumns>
 			<Sentence>
     			<![CDATA[
