@@ -1,0 +1,14 @@
+mat-card{
+    height: 100vh;;
+}
+
+mat-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+mat-card-actions{
+    padding-left: 2rem;
+}

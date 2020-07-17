@@ -1,3 +1,17 @@
-<p>
-  list works!
-</p>
+<mat-card *ngIf="listData">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title><h2>{{listData['list_name']}}</h2></mat-card-title>
+  </mat-card-header>
+  <img mat-card-avatar src="../../../../assets/images/list.jpg" alt="Photo">
+</mat-card>
+
+<mat-selection-list>
+  <mat-card-title>Tracklist</mat-card-title>
+  <mat-list-option *ngFor="let song of songs" [value]="song" 
+   style="text-decoration:none">
+    <img matListAvatar src="{{[discImageRoute] + discData['id_disc'] + '.jpg'}}" alt="Photo">    
+    {{song['song_name']}}
+    <p>Artist: {{discData['artist_name']}}</p>   
+  </mat-list-option>  
+</mat-selection-list>

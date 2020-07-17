@@ -36,7 +36,7 @@ export class SongService extends OntimizeEEService{
      //   return this.httpClient.post(url, body, options);
      }
 
-     getData(songId: number) {
+     getAllDataSong(songId: number) {
         const url = CONFIG.apiEndpoint + '/songs/discSong/search';
         var options = {
             headers: this.buildHeaders()
