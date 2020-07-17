@@ -6,6 +6,8 @@ import { MainRoutingModule } from './main-routing.module';
 import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
+import { ListComponent } from './list/list.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { SongComponent } from './song/song.component';
     MainComponent,
     ArtistComponent,
     DiscComponent,
-    SongComponent
-  ]
+    SongComponent,
+    ListComponent,
+    NavComponent
+      ]
 })
 export class MainModule { }

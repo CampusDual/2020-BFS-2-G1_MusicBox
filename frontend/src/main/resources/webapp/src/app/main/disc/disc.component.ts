@@ -21,7 +21,7 @@ export class DiscComponent implements OnInit {
   discArtistData: any;
   artistIdOfDisc: number;
   artistNameShow: string;
-  arrayOfSongs: string[] = [];;
+  arrayOfSongs: string[] = [];
   ifDiscForSongs: number;
   routerDisc: string;
   routerSong:string;

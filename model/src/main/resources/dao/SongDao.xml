@@ -13,13 +13,13 @@
     </UpdateKeys>
     <GeneratedKey>id_song</GeneratedKey>
     <Queries>
-    	<Query id="default">
-    		<ValidColumns>
-    			<Column>id_song</Column>
-    			<Column>id_gender</Column>
-    			<Column>song_name</Column>
-    			<Column>song_length</Column>
-    		</ValidColumns>
+    	<Query id="default"> 
+            <ValidColumns>
+                <Column>id_song</Column>
+                <Column>id_gender</Column>
+                <Column>song_name</Column>
+                <Column>song_length</Column>
+            </ValidColumns>   		
     		<Sentence>
     			<![CDATA[
     				SELECT

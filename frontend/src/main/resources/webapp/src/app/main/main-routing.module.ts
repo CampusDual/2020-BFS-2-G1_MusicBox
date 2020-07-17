@@ -8,6 +8,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
 import { UsersModule } from './users/users.module';
+import { ListComponent } from './list/list.component';
 
 export function loadHomeModule() {
   return HomeModule;
@@ -43,6 +44,10 @@ export const routes: Routes = [
       {
         path: 'song/:SONGID',
         component: SongComponent
+      },
+      {
+        path: 'list/:LISTID',
+        component: ListComponent
       }
     ]
   }
