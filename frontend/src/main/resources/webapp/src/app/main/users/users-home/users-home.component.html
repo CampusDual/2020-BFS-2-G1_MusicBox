@@ -1,18 +1,19 @@
 <mat-card>
   <mat-card-header>    
-    <mat-card-title><strong>Welcome: </strong>{{user_name}}</mat-card-title>
-    <!--<img matListAvatar src='../../../../assets/images/avatar.png' alt="Photo">-->
-    <mat-card-actions>
-      <button mat-button [routerLink]="['/main/users/user', userData['user_']]">Edit Profile</button>
-    </mat-card-actions>    
-  </mat-card-header>   
-  
+    <mat-card-title><strong><h1>MusicBox</h1></strong></mat-card-title>
+    <!-- <mat-card-title><h3><strong>Welcome: {{user_name}}</strong></h3></mat-card-title> -->
+    <mat-card-title><h3>Welcome: <p>{{user_name}}</p></h3></mat-card-title>
+  </mat-card-header> 
 
-<mat-selection-list>
-  <mat-card-title>Playlists</mat-card-title>      
-  <mat-list-option *ngFor="let list of arrayOfLists" [value]="list" [routerLink]="['/main/list', list['id_list']]">    
+  <button mat-button class="butt" [routerLink]="['/main/users/user', userData['user_']]">Edit Profile</button>
+
+  <mat-selection-list>
+  <mat-card-title><h5>Playlists</h5></mat-card-title>      
+
+  <mat-list-option *ngFor="let list of arrayOfLists" [value]="list" 
+    [routerLink]="['/main/list', list['id_list']]">    
     <img matListAvatar src="../../../../assets/images/list.jpg" alt="Photo">
     <mat-card-title>{{list['list_name']}}</mat-card-title>   
-  </mat-list-option>  
-</mat-selection-list> 
+  </mat-list-option> 
+  </mat-selection-list> 
 </mat-card>
