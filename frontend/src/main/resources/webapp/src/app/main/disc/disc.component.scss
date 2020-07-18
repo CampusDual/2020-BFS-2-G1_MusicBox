@@ -1,0 +1,23 @@
+::ng-deep.mat-pseudo-checkbox{
+    display: none !important;
+  }
+
+mat-card{
+    height: 100vh;
+}
+
+ mat-card img.pic{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    width: 25%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 25%;
+    padding-left: 32px;
+}
+
+mat-card-content {
+    padding-left: 10px;
+}
+
+mat-card h5{
+    font-size: medium;
+    padding-left: 10px;
+}

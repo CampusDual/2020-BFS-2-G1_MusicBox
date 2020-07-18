@@ -1,0 +1,20 @@
+::ng-deep.mat-pseudo-checkbox{
+    display: none !important;
+  }
+
+mat-card{
+    height: 100vh;
+}
+
+mat-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+mat-card h5{
+    font-size: medium;
+    padding-left: 10px;
+}
+
