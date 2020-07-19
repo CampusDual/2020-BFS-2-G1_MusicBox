@@ -8,7 +8,7 @@ import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
 import { ListComponent } from './list/list.component';
 import { NavComponent } from './nav/nav.component';
-import { CarouselComponent } from './carousel/carousel.component';
+
 
 @NgModule({
   imports: [
@@ -22,8 +22,6 @@ import { CarouselComponent } from './carousel/carousel.component';
     DiscComponent,
     SongComponent,
     ListComponent,
-    NavComponent,
-    CarouselComponent
-      ]
+    NavComponent]
 })
 export class MainModule { }

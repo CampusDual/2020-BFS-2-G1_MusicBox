@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { AppComponent } from 'app/app.component';
 import { HomeService } from '../services/home.service';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HomeService } from '../services/home.service';
     AppComponent
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CarouselComponent
   ]
 })
 export class HomeModule { }
