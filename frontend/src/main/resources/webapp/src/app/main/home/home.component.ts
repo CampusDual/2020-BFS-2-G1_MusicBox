@@ -1,8 +1,11 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { HomeService } from '../services/home.service';
 import { AppComponent } from 'app/app.component';
+
+import { Slide } from "./carousel/carousel.interface";
+import { CarouselComponent } from "./carousel/carousel.component";
 
 @Component({
   selector: 'home',
@@ -10,6 +13,15 @@ import { AppComponent } from 'app/app.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+    @ViewChild(CarouselComponent) carousel: CarouselComponent;
+
+    slides: Slide[] = [
+        { src: "https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" },
+        { src: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80" },
+        { src: "../assets/images/imagesArtists/3.jpg" },
+        { src: "../assets/images/imagesArtists/1.jpg"}
+      ];    
 
   radioSelectedValue = '';
   inputSearchValue: any;
