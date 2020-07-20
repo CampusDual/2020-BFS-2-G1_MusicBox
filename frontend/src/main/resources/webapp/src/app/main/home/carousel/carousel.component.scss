@@ -12,31 +12,30 @@
 
     //position: relative; //org
     //position: absolute; //mod
-    height: 100%;
-    width: 100%;//org
+    //height: 100%;
+    //width: 100%;//org
     //width: 95%;//mod 
-    overflow: hidden;//El desbordamiento se recorta y el resto del contenido será invisible.
-    border-radius: 0.5em;
+    //overflow: hidden;//El desbordamiento se recorta y el resto del contenido será invisible.
+    //border-radius: 0.5em;
 
     z-index: 1;
-
   }
   
   .slide {
     position: absolute;//org
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;//when we resize the browser window, the aspect ratio of the images is preserved
     // zoom effect on hover
-    transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
-    border-radius: 0.5em;
+    //transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
+    //border-radius: 0.5em;
   }
   
-  .slide:hover {
-    transform: scale(1.025);
-  }
+  //.slide:hover {
+  //  transform: scale(1.025);
+  //}
   
   // =========================
   // Next and Prev buttons

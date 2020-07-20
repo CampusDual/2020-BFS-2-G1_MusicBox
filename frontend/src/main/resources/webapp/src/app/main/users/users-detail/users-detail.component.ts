@@ -24,20 +24,17 @@ export class UsersDetailComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserData()
-    .subscribe(
-      res => {this.userData = res && res['data'] && res['data'][0] ? res['data'][0] :  [];
-            console.log(this.userData);
-      var userUser = "user_";
-      this.user_user = this.userData[userUser];
-      console.log(this.user_user);
-      var name = "name";
-      this.userName = this.userData[name]; 
-      console.log(this.userName);
-      var surname = "surname";
-      this.userSurname = this.userData[surname];
-      var mail = "email";
-      this.userMail = this.userData[mail];
+      .subscribe(
+        res => {
+          this.userData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
+          console.log(this.userData);          
+          this.user_user = this.userData['user_'];
+          console.log(this.user_user);          
+          this.userName = this.userData['name'];
+          console.log(this.userName);          
+          this.userSurname = this.userData['surname'];          
+          this.userMail = this.userData['email'];
+        }
+      );
   }
-    );
-}
 }
