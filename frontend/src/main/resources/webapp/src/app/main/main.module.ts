@@ -7,8 +7,6 @@ import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
 import { ListComponent } from './list/list.component';
-import { NavComponent } from './nav/nav.component';
-
 
 @NgModule({
   imports: [
@@ -21,7 +19,7 @@ import { NavComponent } from './nav/nav.component';
     ArtistComponent,
     DiscComponent,
     SongComponent,
-    ListComponent,
-    NavComponent]
+    ListComponent
+    ]
 })
 export class MainModule { }

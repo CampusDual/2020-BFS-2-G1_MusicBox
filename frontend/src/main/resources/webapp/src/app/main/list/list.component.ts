@@ -40,15 +40,12 @@ export class ListComponent implements OnInit {
           console.log(this.listData);          
         this.listService.getSongsOfList(this.listId).subscribe
         (res => {this.songs = res && res['data'] && res['data'] ? res['data'] : [];
-          console.log(this.songs);
-          
-
+          console.log(this.songs); 
           this.songService.getAllDataSong(this.songs[0]["id_song"]).subscribe
           (res => 
             {this.discData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
               console.log(this.discData["id_disc"]);
-              this.discImageRoute = this.appComponent.imageDiscRoute;
-            
+              this.discImageRoute = this.appComponent.imageDiscRoute;            
             }
           )        
           } 
