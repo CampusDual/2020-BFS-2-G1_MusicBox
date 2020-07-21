@@ -42,7 +42,7 @@ public class UserService implements IUserService {
  
 	public EntityResult userUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
 		 Map<Object, Object> filter = new HashMap<>();
-		 List columns = Arrays.asList(userDao.ID);
+		 List<String> columns = Arrays.asList(userDao.ID);
 		 EntityResult userData = this.userQuery(filter, columns);
 		 Map<Object, Object> user = userData.getRecordValues(0);
 		 filter.put(userDao.ID, user.get(userDao.ID));

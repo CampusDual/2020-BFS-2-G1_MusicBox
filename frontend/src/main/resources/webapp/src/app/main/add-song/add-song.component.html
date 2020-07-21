@@ -1,0 +1,9 @@
+<mat-selection-list #lists >
+  <mat-card-title><h5>Select a Playlist</h5></mat-card-title>
+
+  <mat-list-option *ngFor="let list of userData" [value]="list" 
+   style="text-decoration:none" (click)="addList(list['id_list'])">
+    <img matListAvatar src="../../../../assets/images/icon.png" alt="Photo">    
+    {{list['list_name']}}    
+  </mat-list-option>  
+</mat-selection-list>

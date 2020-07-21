@@ -10,7 +10,9 @@ import { HttpHeaders } from '@angular/common/http';
      providedIn: 'root'
      }
   )
-export class ListService extends OntimizeEEService{    
+export class ListService extends OntimizeEEService{   
+    
+    userId: number;
     
   getList(listId: number) {
     
@@ -60,16 +62,16 @@ export class ListService extends OntimizeEEService{
         return dataObservable.pipe(share()); 
       }
 
-      getListsOfUser(userId: number) {
+      getListsOfUser() {
         const url = CONFIG.apiEndpoint + '/lists/list/search';
         var options = {
             headers: this.buildHeaders()
         };
         var body = JSON.stringify({
             filter: {
-                id_user: userId
+                id_user: this.userId
             },
-            columns: ['id_user', 'id_list', 'id_user', 'list_name']
+            columns: ['id_user', 'id_list', 'list_name']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {
@@ -102,7 +104,29 @@ export class ListService extends OntimizeEEService{
             }, function () { return _innerObserver.complete(); });
         });
         return dataObservable.pipe(share()); 
-      }  
+      } 
+      
+      insertSong(listId: number, songId: number) {
+        const url = CONFIG.apiEndpoint + '/lists/listSong';
+        var options = {
+            headers: this.buildHeaders()
+        };
+        var body = JSON.stringify({
+            data: {                
+                id_list: listId,
+                id_song: songId
+            }            
+        });
+        var self = this;
+        var dataObservable = new Observable(function (_innerObserver) {
+            self.httpClient.post(url, body, options).subscribe(function (resp) {
+                self.parseSuccessfulQueryResponse(resp, _innerObserver);
+            }, function (error) {
+                self.parseUnsuccessfulQueryResponse(error, _innerObserver);
+            }, function () { return _innerObserver.complete(); });
+        });
+        return dataObservable.pipe(share()); 
+      }
       
       
     buildHeaders () {

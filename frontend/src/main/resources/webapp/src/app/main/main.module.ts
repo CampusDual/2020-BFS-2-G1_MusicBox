@@ -7,6 +7,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { DiscComponent } from './disc/disc.component';
 import { SongComponent } from './song/song.component';
 import { ListComponent } from './list/list.component';
+import { AddSongComponent } from './add-song/add-song.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ListComponent } from './list/list.component';
     ArtistComponent,
     DiscComponent,
     SongComponent,
-    ListComponent
+    ListComponent,
+    AddSongComponent
     ]
 })
 export class MainModule { }

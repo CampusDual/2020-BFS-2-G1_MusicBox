@@ -30,7 +30,7 @@ export class UsersHomeComponent implements OnInit {
           console.log(this.userData);
           this.user_name = this.userData['user_'];
                    
-          this.listService.getListsOfUser(this.userData['id_user'])
+          this.listService.getListsOfUser()
             .subscribe(
               res => {
                 this.arrayOfLists = res && res['data'] && res['data'] ? res['data'] : [];
