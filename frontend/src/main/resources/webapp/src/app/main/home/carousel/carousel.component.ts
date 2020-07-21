@@ -22,7 +22,7 @@ import { Slide } from './carousel.interface';
 
 export class CarouselComponent implements OnInit {
   @Input() slides: Slide[];
-
+  
   currentSlide = 0;
 
   constructor() { }
