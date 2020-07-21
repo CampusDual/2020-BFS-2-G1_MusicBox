@@ -14,8 +14,7 @@ export class ListService extends OntimizeEEService{
     
     userId: number;
     
-  getList(listId: number) {
-    
+  getList(listId: number) {    
         const url = CONFIG.apiEndpoint + '/lists/list/search';
         var options = {
             headers: this.buildHeaders()

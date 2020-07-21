@@ -45,7 +45,12 @@ public class ListService implements IListService {
 	}
 
 	@Override
-	public EntityResult listInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {		
+	public EntityResult listInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+		Map<Object, Object> filter = new HashMap<>();
+		List<String> columns = Arrays.asList(userDao.ID);			 
+		EntityResult userData = this.userSrv.userQuery(filter, columns);
+		Map<Object, Object> user = userData.getRecordValues(0);
+		attrMap.put(userDao.ID, user.get(userDao.ID));
 		return this.daoHelper.insert(this.listDao, attrMap);
 	}
 
