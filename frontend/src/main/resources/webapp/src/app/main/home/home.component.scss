@@ -1,3 +1,7 @@
+::ng-deep.mat-pseudo-checkbox{
+  display: none !important;
+}
+
 .bg {
   background-color: darkred;
 }
@@ -41,4 +45,3 @@ o-form{
   width: 500px;
   padding: 2em;
 }
-
