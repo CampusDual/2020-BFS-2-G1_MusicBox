@@ -16,7 +16,9 @@
 			<AmbiguousColumns>
 				<AmbiguousColumn name="ID_USER" prefix="T"/>
 		    	<AmbiguousColumn name="ID_LIST" prefix="L" />		   	
-		    	<AmbiguousColumn name="ID_SONG" prefix="LS" />		   	
+		    	<AmbiguousColumn name="ID_SONG" prefix="LS" />
+		    	<AmbiguousColumn name="ID_DISC" prefix="DS" />
+		    	<AmbiguousColumn name="ID_ARTIST" prefix="A" />		   	
 		  	</AmbiguousColumns>
 			<Sentence>
     			<![CDATA[
@@ -29,7 +31,13 @@
     					INNER JOIN PUBLIC.LIST_SONG LS ON
     					L.ID_LIST = LS.ID_LIST
     					INNER JOIN PUBLIC.SONG S ON
-    					LS.ID_SONG = S.ID_SONG    										     	
+    					LS.ID_SONG = S.ID_SONG
+    					INNER JOIN PUBLIC.DISC_SONG DS ON
+    					S.ID_SONG = DS.ID_SONG
+    					INNER JOIN PUBLIC.DISC D ON
+    					DS.ID_DISC = D.ID_DISC
+    					INNER JOIN PUBLIC.ARTIST A ON
+    					D.ID_ARTIST = A.ID_ARTIST 							     	
     				#WHERE#		
     			]]>
     		</Sentence>

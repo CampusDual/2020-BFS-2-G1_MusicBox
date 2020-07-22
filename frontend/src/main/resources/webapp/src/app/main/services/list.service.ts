@@ -92,7 +92,7 @@ export class ListService extends OntimizeEEService{
             filter: {
                 id_list: listId
             },
-            columns: ['id_list', 'id_song', 'song_name', 'song_length']
+            columns: ['id_list', 'id_song', 'id_disc', 'disc_name', 'artist_name', 'song_name', 'song_length']
         });
         var self = this;
         var dataObservable = new Observable(function (_innerObserver) {

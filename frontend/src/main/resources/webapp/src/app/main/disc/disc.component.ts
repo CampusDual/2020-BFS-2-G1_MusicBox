@@ -58,8 +58,7 @@ export class DiscComponent implements OnInit {
                     res => {
                       this.arrayOfSongs = res && res['data'] && res['data'] ? res['data'] : [];
                       console.log(this.arrayOfSongs);
-                      this.discImageRoute = this.appComponent.imageDiscRoute;                      
-                      this.idSongForRoute = this.arrayOfSongs.values['id_song'];
+                      this.discImageRoute = this.appComponent.imageDiscRoute;
                     }
                   )
 

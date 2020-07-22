@@ -9,9 +9,9 @@
   <mat-card-title><h5>Tracklist</h5></mat-card-title>
 
   <mat-list-option *ngFor="let song of songs" [value]="song" style="text-decoration:none">
-    <img matListAvatar src="{{[discImageRoute] + discData['id_disc'] + '.jpg'}}" alt="Photo">    
+    <img matListAvatar src="{{[discImageRoute] + song['id_disc'] + '.jpg'}}" alt="Photo">    
         {{song['song_name']}}
-    <p>Artist: {{discData['artist_name']}}</p>   
+    <p>Artist: {{song['artist_name']}}</p>   
   </mat-list-option>
 
 </mat-selection-list>
