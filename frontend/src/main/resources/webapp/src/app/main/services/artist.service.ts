@@ -12,8 +12,7 @@ import { HttpHeaders } from '@angular/common/http';
   )
 export class ArtistService extends OntimizeEEService{
 
-  getArtist(artistId: number) {
-    
+  getArtist(artistId: number) {    
         const url = CONFIG.apiEndpoint + '/artists/artist/search';
         var options = {
             headers: this.buildHeaders()

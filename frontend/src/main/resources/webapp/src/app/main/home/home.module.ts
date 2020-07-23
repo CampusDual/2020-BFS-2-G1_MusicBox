@@ -16,9 +16,7 @@ import { CarouselComponent } from './carousel/carousel.component';
   imports: [
     SharedModule,
     OntimizeWebModule,
-    HomeRoutingModule
-    /* BrowserModule,    
-    BrowserAnimationsModule  */   
+    HomeRoutingModule     
   ],
   providers: [
     HomeService,
