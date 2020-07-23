@@ -32,34 +32,33 @@ export class AddSongComponent implements OnInit {
 
   ngOnInit() {
     this.songData = this.route.params
-    .subscribe(
-      params => {
-      this.songId =+ params['SONGID'];
-      this.listService.getListsOfUser()
+      .subscribe(
+        params => {
+          this.songId = + params['SONGID'];
+          this.listService.getListsOfUser()
+            .subscribe(
+              res => {
+                this.userData = res && res['data'] && res['data'] ? res['data'] : [];
+                console.log(this.userData);
+              }
+            )
+        }
+      )
+  }
+
+  addList(idList: number) {
+    console.log(this.songId);
+    this.listId = idList;
+    console.log(this.listId);
+    if (this.listService.insertSong(this.listId, this.songId)
       .subscribe(
         res => {
-          this.userData = res && res['data'] && res['data'] ? res['data'] : [];
-          console.log(this.userData);          
-          }
-      )  
-  }
-    )
-}
-
-addList(idList:number){  
-  console.log(this.songId);
-  this.listId = idList;
-  console.log(this.listId);
-  if(this.listService.insertSong(this.listId, this.songId)
-  .subscribe(
-    res => {
-       res && res['code'] === 0 && res['data'] ? res['data'] : [];         
+          res && res['code'] === 0 && res['data'] ? res['data'] : [];
+        }
+      )) {
+      window.alert('Song added ok!');
+    } else {
+      window.alert("Something's gone wrong. Try again");
     }
-  )) {
-    window.alert('Song added ok!');
-  } else {
-    window.alert("Something's gone wrong. Try again");
   }
-  
-}
 }

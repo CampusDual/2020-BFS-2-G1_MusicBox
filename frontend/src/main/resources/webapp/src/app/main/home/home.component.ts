@@ -17,10 +17,9 @@ export class HomeComponent implements OnInit {
   @ViewChild(CarouselComponent) carousel: CarouselComponent;
 
   slides: Slide[] = [
-    { src: "../assets/images/carousel/antye.jpg" },
-    { src: "../assets/images/carousel/sarah.jpg" },
-    { src: "../assets/images/carousel/sakamoto.jpg" },
-    { src: "../assets/images/carousel/max.jpg" },
+    { src: "../assets/images/carousel/antye_efx_text2.png" },
+    { src: "../assets/images/carousel/sarah_davachi_text.png" },
+    { src: "../assets/images/carousel/tcv_text2.png" }
   ];
 
   radioSelectedValue = "";

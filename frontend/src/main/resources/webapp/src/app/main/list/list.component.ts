@@ -28,31 +28,7 @@ export class ListComponent implements OnInit {
     protected songService: SongService
   ) { }
 
-  ngOnInit() {
-    /* this.listRoute = this.route.params.subscribe
-    (params => 
-      {this.listId = +params['LISTID'];
-      console.log(this.listId);
-      this.listService.getList(this.listId).subscribe
-      (res => 
-        {this.listData =
-          res && res['data'] && res['data'][0] ? res['data'][0] : [];
-          console.log(this.listData);          
-        this.listService.getSongsOfList(this.listId).subscribe
-        (res => {this.songs = res && res['data'] && res['data'] ? res['data'] : [];
-          console.log(this.songs);          
-          this.songService.getAllDataSong(this.songs.values['id_song']).subscribe
-          (res => 
-            {this.discData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
-              console.log(this.discData["id_disc"]);
-              this.discImageRoute = this.appComponent.imageDiscRoute;            
-            }
-          )        
-          } 
-        )
-      });
-    }
-    ) */
+  ngOnInit() {    
     this.listRoute = this.route.params
     .subscribe(
       params => {this.listId =+ params['LISTID'];

@@ -1,8 +1,7 @@
 <mat-card>
   <mat-card-header>    
     <mat-card-title><strong><h1>MusicBox</h1></strong></mat-card-title>
-    <!-- <mat-card-title><h3><strong>Welcome: {{user_name}}</strong></h3></mat-card-title> -->
-    <mat-card-title><h3>Welcome: <p>{{user_name}}</p></h3></mat-card-title>
+    <mat-card-title><h3>Welcome: <p>{{userData['name']}}</p></h3></mat-card-title>
   </mat-card-header> 
 
   <button mat-button class="butt" [routerLink]="['/main/users/user', userData['user_']]">Edit Profile</button>

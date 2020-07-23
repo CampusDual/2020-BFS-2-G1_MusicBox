@@ -27,12 +27,12 @@ export class UsersDetailComponent implements OnInit {
       .subscribe(
         res => {
           this.userData = res && res['data'] && res['data'][0] ? res['data'][0] : [];
-          console.log(this.userData);          
+          console.log(this.userData);
           this.user_user = this.userData['user_'];
-          console.log(this.user_user);          
+          console.log(this.user_user);
           this.userName = this.userData['name'];
-          console.log(this.userName);          
-          this.userSurname = this.userData['surname'];          
+          console.log(this.userName);
+          this.userSurname = this.userData['surname'];
           this.userMail = this.userData['email'];
         }
       );
